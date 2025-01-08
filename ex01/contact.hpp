@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:18:23 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/08 18:40:25 by mbico            ###   ########.fr       */
+/*   Updated: 2025/01/08 16:56:12 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
-#include "Contact.hpp"
 
-class	PhoneBook
+class	contact
 {
 	private:
-		Contact	list[8];
-		int		index;
+		std::string first_name;
+		std::string last_name;
+		std::string	nickname;
+		std::string phone_number;
+		std::string	darkest_secret;
 	public:
-		PhoneBook();
-		void	add_contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
-		int		search_contact(void);
+		void	set_contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
+		std::string	get_contact(void);
 };
