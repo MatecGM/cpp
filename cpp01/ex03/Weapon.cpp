@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 14:18:23 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/08 16:56:12 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/10 18:06:13 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/10 18:53:34 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include "Weapon.hpp"
 
-class	contact
+const std::string	&Weapon::getType(void)
 {
-	private:
-		std::string first_name;
-		std::string last_name;
-		std::string	nickname;
-		std::string phone_number;
-		std::string	darkest_secret;
-	public:
-		void	set_contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
-		std::string	get_contact(void);
-};
+	return (_type);
+}
+
+void	Weapon::setType(std::string type)
+{
+	_type = type;
+}
+
+Weapon::Weapon(const Weapon& weapon)
+{
+	*this = weapon;
+}
+
+Weapon::Weapon(std::string type)
+{
+	_type = type;
+}

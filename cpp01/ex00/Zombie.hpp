@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 14:18:23 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/08 18:40:25 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/10 16:31:05 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/10 16:58:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
-#include "Contact.hpp"
 
-class	PhoneBook
-{
-	private:
-		Contact	list[8];
-		int		index;
+class	Zombie{
 	public:
-		PhoneBook();
-		void	add_contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
-		int		search_contact(void);
+		Zombie(std::string name);
+		~Zombie();
+		void	announce(void);
+	private:
+		std::string	name;
 };
+
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);

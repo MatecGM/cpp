@@ -6,20 +6,15 @@
 #    By: gadelbes <gadelbes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 15:23:49 by fparis            #+#    #+#              #
-#    Updated: 2025/01/08 19:30:27 by mbico            ###   ########.fr        #
+#    Updated: 2025/01/10 17:57:40 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = PhoneBook
-
-SRC_DIR = src
-OBJ_DIR = obj
+CFLAGS = -std=c++98 -Wall -Werror -Wextra -g
+NAME = Brain
 
 SRCS = main.cpp\
-	   Contact.cpp\
-		PhoneBook.cpp\
 
 OBJS = $(SRCS:%.cpp=%.o)
 

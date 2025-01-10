@@ -6,18 +6,18 @@
 #    By: gadelbes <gadelbes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 15:23:49 by fparis            #+#    #+#              #
-#    Updated: 2025/01/08 19:30:11 by mbico            ###   ########.fr        #
+#    Updated: 2025/01/10 18:02:54 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = megaphone
+CFLAGS = -std=c++98 -Wall -Werror -Wextra -g
+NAME = violence
 
-SRC_DIR = src
-OBJ_DIR = obj
-
-SRCS = megaphone.cpp\
+SRCS = main.cpp\
+	   HumanA.cpp\
+	   HumanB.cpp\
+	   Weapon.cpp\
 
 OBJS = $(SRCS:%.cpp=%.o)
 
