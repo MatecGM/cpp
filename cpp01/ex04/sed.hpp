@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 18:10:41 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/13 18:42:17 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/13 15:17:15 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/13 17:47:06 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "HumanA.hpp"
+#ifndef  SED_HPP
+# define	SED_HPP
+# include <cstring>
 
-void	HumanA::attack(void)
-{
-	std::cout << _name << "attacks with their " << _weapon.getType() << std::endl;
-}
+enum	e_parameters {
+	FILENAME = 1,
+	S1,
+	S2,
+};
 
-HumanA::HumanA(std::string name, Weapon& weapon): _weapon(weapon)
-{
-	_name = name;
-}
+#endif

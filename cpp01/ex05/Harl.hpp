@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 18:10:41 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/13 18:42:17 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/13 17:52:11 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/13 18:33:23 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
 #include <iostream>
-#include "HumanA.hpp"
 
-void	HumanA::attack(void)
-{
-	std::cout << _name << "attacks with their " << _weapon.getType() << std::endl;
-}
-
-HumanA::HumanA(std::string name, Weapon& weapon): _weapon(weapon)
-{
-	_name = name;
-}
+class	Harl{
+	public:
+		void	complain(std::string level);
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+};

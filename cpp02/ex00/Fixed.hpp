@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 18:10:41 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/13 18:42:17 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/14 17:13:08 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/14 23:46:33 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "HumanA.hpp"
+class	Fixed {
+	public:
+		Fixed();
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
+		~Fixed();
 
-void	HumanA::attack(void)
-{
-	std::cout << _name << "attacks with their " << _weapon.getType() << std::endl;
-}
-
-HumanA::HumanA(std::string name, Weapon& weapon): _weapon(weapon)
-{
-	_name = name;
-}
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		
+	private:
+		int					_rawBits;
+		const static int	_fractBits = 8;
+};
