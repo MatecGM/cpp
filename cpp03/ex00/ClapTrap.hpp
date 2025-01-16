@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 17:13:08 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/15 17:59:00 by mbico            ###   ########.fr       */
+/*   Created: 2025/01/16 16:55:51 by mbico             #+#    #+#             */
+/*   Updated: 2025/01/16 17:25:24 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include <string>
 
-class	Fixed {
+class	ClapTrap {
 	public:
-		Fixed();
-		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
-		~Fixed();
-		Fixed(const int raw);
-		Fixed(const float raw);
+		ClapTrap();
+		ClapTrap(const ClapTrap& other);
+		ClapTrap& operator=(const ClapTrap& other);
+		~ClapTrap();
 
-		float	toFloat(void) const;
-		int		toInt(void) const;
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
-		
+		ClapTrap(std::string name);
+		void	attack(const std::string& targer);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+
 	private:
-		int					_rawBits;
+		std::string	_name;
+		int			_hitPoints = 10;
+		int			_energyPoints = 10;
+		int			_attackDamage = 0;
 
-		const static int	_fractBits = 8;
 };
-
-std::ostream& operator<<(std::ostream& out, const Fixed& obj);

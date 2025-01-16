@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:18:08 by mbico             #+#    #+#             */
-/*   Updated: 2025/01/15 18:43:18 by mbico            ###   ########.fr       */
+/*   Updated: 2025/01/15 20:37:29 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,110 @@ void	Fixed::setRawBits(int const raw)
 	std::cout << "setRawBits member function called" << std::endl;
 	_rawBits = raw;
 }
+
+bool Fixed::operator>(const Fixed& other) const
+{
+	return (this->toFloat() > other.toFloat());
+}
+
+bool Fixed::operator<(const Fixed& other) const
+{
+	return (this->toFloat() < other.toFloat());
+}
+
+bool Fixed::operator>=(const Fixed& other) const
+{
+	return (this->toFloat() >= other.toFloat());
+}
+
+bool Fixed::operator<=(const Fixed& other) const
+{
+	return (this->toFloat() <= other.toFloat());
+}
+
+bool Fixed::operator==(const Fixed& other) const
+{
+	return (this->toFloat() == other.toFloat());
+}
+
+bool Fixed::operator!=(const Fixed& other) const
+{
+	return (this->toFloat() != other.toFloat());
+}
+
+Fixed	Fixed::operator+(const Fixed& other) const
+{
+	return (this->toFloat() + other.toFloat());
+}
+
+Fixed	Fixed::operator-(const Fixed& other) const
+{
+	return (this->toFloat() - other.toFloat());
+}
+
+Fixed	Fixed::operator*(const Fixed& other) const
+{
+	return (this->toFloat() * other.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed& other) const
+{
+	return (this->toFloat() / other.toFloat());
+}
+
+Fixed&	Fixed::operator++()
+{
+	++_rawBits;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	cp = *this;
+	++_rawBits;
+	return (cp);
+}
+
+Fixed&	Fixed::operator--()
+{
+	--_rawBits;
+	return(*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	cp = *this;
+	--_rawBits;
+	return (cp);
+}
+
+Fixed&	Fixed::min(Fixed& f1, Fixed& f2)
+{
+	if (f1 < f2)
+		return (f1);
+	return (f2);
+}
+
+const Fixed&	Fixed::min(const Fixed& f1, const Fixed& f2)
+{
+	if (f1 < f2)
+		return (f1);
+	return (f2);
+}
+
+Fixed&	Fixed::max(Fixed& f1, Fixed& f2)
+{
+	if (f1 > f2)
+		return (f1);
+	return (f2);
+}
+
+const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
+{
+	if (f1 > f2)
+		return (f1);
+	return (f2);
+}
+
+
 
