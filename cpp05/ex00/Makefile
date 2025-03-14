@@ -6,17 +6,15 @@
 #    By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 23:42:46 by mbico             #+#    #+#              #
-#    Updated: 2025/01/21 18:19:22 by mbico            ###   ########.fr        #
+#    Updated: 2025/02/26 23:45:11 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = Trap
+NAME = Bureaucrat
 
-SRCS = main.cpp\
-		ClapTrap.cpp\
-
+SRCS = $(shell find . -name '*.cpp')
 OBJS = $(SRCS:%.cpp=%.o)
 
 RED = \033[0;31m
