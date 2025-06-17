@@ -6,21 +6,22 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:46:08 by mateo             #+#    #+#             */
-/*   Updated: 2025/03/19 00:32:12 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/16 16:29:57 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "log.h"
 
 Form::Form(void): _name("Default"), _gradeSignIt(150), _gradeExecIt(150)
 {
-	std::cout << "Form Constructor Default : \"Default\" gradeSignIt 150, gradeExecIt 150" << std::endl;
+	LOG("Form Constructor Default : \"Default\" gradeSignIt 150, gradeExecIt 150");
 	_signed = false;
 }
 
 Form::Form(const std::string name, const int gradeSignIt, const int gradeExecIt): _name(name), _gradeSignIt(gradeSignIt), _gradeExecIt(gradeExecIt)
 {	
-	std::cout << "Form Constructor : \"" << name << "\" gradeSignIt " << gradeSignIt << ", gradeExecIt " << gradeExecIt << " (Unsigned)" << std::endl;
+	LOG("Form Constructor : \"" << name << "\" gradeSignIt " << gradeSignIt << ", gradeExecIt " << gradeExecIt << " (Unsigned)");
 	if (gradeSignIt < 1 || gradeExecIt < 1)
 		throw Form::GradeTooHighException();
 	else if (gradeSignIt > 150 || gradeExecIt > 150)
@@ -30,18 +31,18 @@ Form::Form(const std::string name, const int gradeSignIt, const int gradeExecIt)
 
 Form::~Form(void)
 {
-	std::cout << "Form Destructor : \"" << _name << "\" gradeSignIt " << _gradeSignIt << ", gradeExecIt " << _gradeExecIt << " (Unsigned)" << std::endl;
+	LOG("Form Destructor : \"" << _name << "\" gradeSignIt " << _gradeSignIt << ", gradeExecIt " << _gradeExecIt << " (Unsigned)");
 }
 
 Form::Form(const Form &cpy): _name(cpy._name), _gradeSignIt(cpy._gradeSignIt), _gradeExecIt(cpy._gradeExecIt)
 {
-	std::cout << "Form Constructor Copy : \"" << _name << "\" gradeSignIt " << _gradeSignIt << ", gradeExecIt " << _gradeExecIt << " (Unsigned)" << std::endl;
+	LOG("Form Constructor Copy : \"" << _name << "\" gradeSignIt " << _gradeSignIt << ", gradeExecIt " << _gradeExecIt << " (Unsigned)");
 	*this = cpy;	
 }
 
 Form	&Form::operator=(const Form &cpy)
 {
-	std::cout << "Form Operator = : \"" << _name << "\" => \"" << cpy._name << "\"" << std::endl;
+	LOG("Form Operator = : \"" << _name << "\" => \"" << cpy._name << "\"");
 	if (this != &cpy)
 		_signed = cpy._signed;
 	return (*this);
@@ -76,10 +77,10 @@ std::ostream& operator<<(std::ostream& out, const Form& obj)
 	return (out);
 }
 
-void	Form::beSigned(Bureaucrat bc)
+void	Form::beSigned(Bureaucrat &bc)
 {
 	if (bc.getGrade() > _gradeSignIt)
-		throw;
+		throw Form::GradeTooLowException();
 	else
 		_signed = true;
 }

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:45:17 by mbico             #+#    #+#             */
-/*   Updated: 2025/03/27 17:02:30 by mbico            ###   ########.fr       */
+/*   Updated: 2025/06/16 16:36:45 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <string>
 
-class	Form;
+class	AForm;
 
 class	Bureaucrat {
 	private:
@@ -32,7 +32,7 @@ class	Bureaucrat {
 		void				incrementGrade();
 		void				decrementGrade();
 
-		void	signForm(Form &f);
+		void	signForm(AForm &f);
 
 	class GradeTooHighException: public std::exception
 	{
@@ -46,4 +46,3 @@ class	Bureaucrat {
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj);
 
-#include "Form.hpp"
