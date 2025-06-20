@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:48:03 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 06:09:22 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/20 06:30:14 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.h"
 #include "RobotomyRequestForm.h"
 #include "ShrubberyCreationForm.h"
+#include "Intern.h"
 #include <iostream>
 #include <cstdlib>
 
@@ -130,8 +131,33 @@ void ex02() {
 			})
 }
 
+void ex03() {
+	std::cout << BOLDMAGENTA << "================EX03 :===============" << std::endl;
+	RUN_TEST("test0 - orthodox canonical form", {
+		Intern	i1;
+		AForm		*f1;
+		AForm		*f2;
+		AForm		*f3;
+		AForm		*f4;
+		Bureaucrat	b1("b1", 1);
+
+		f1 = i1.makeForm("presidential pardon", "yo");
+		b1.signForm(*f1);
+		f2 = i1.makeForm("shrubbery creation", "yo");
+		b1.signForm(*f2);
+		f3 = i1.makeForm("robotomy request", "yo");
+		b1.signForm(*f3);
+		delete f1;
+		delete f2;
+		delete f3;
+		f4 = i1.makeForm("bababa", "yo");
+		delete f4;
+	});
+}
+
 int main(void) {
 	srand(time(0));
 	ex00();
 	ex02();
+	ex03();
 }

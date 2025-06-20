@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.h                              :+:      :+:    :+:   */
+/*   Intern.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
+/*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 16:32:26 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 04:38:53 by mateo            ###   ########.fr       */
+/*   Created: 2025/06/20 05:33:14 by mateo             #+#    #+#             */
+/*   Updated: 2025/06/20 06:16:18 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <string>
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm {
+class Intern {
 public:
-	RobotomyRequestForm(const RobotomyRequestForm &ref);
-	RobotomyRequestForm(void);
-	~RobotomyRequestForm(void);
+  Intern(const Intern &ref);
+  Intern(void);
+  ~Intern(void);
 
-	RobotomyRequestForm &operator=(RobotomyRequestForm const &src);
+  Intern &operator=(Intern const &src);
 
+  AForm	*makeForm(std::string name, std::string target);
+
+  class	UnknownFormException: public std::exception {
+		const char *what() const throw();
+  };
 };
-void	robotomyExecuteAction(Bureaucrat const & executor);
