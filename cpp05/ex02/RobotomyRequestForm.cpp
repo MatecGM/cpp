@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:32:19 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 04:39:04 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 08:42:14 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 #include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequestForm", 72, 45) {
-    LOG("constructor RobotomyRequestForm empty")}
+    LOG("constructor RobotomyRequestForm empty")
+	_target = "default";
+}
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45) {
+    LOG("constructor RobotomyRequestForm empty")
+	_target = target;
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm("RobotomyRequestForm", 72, 45) {
   LOG("constructor RobotomyRequestForm copy")
@@ -33,12 +40,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
   return (*this);
 }
 
-void	robotomyExecuteAction(Bureaucrat const & executor) {
+void	RobotomyRequestForm::executeAction() const {
 	int randNum = rand() % 2;
 	
 	std::cout << "DRRRRRR DRRRRRRRR" << std::endl;
 	if (randNum)
-		std::cout << executor.getName() << " has been robotomized" << std::endl;
+		std::cout << _target << " has been robotomized" << std::endl;
 	else
-		std::cout << executor.getName() << " has not been robotomized" << std::endl;
+		std::cout << _target << " has not been robotomized" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:48:03 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 06:30:14 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 10:04:19 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,44 +86,35 @@ void ex00() {
 
 void ex02() {
   std::cout << BOLDMAGENTA << "================EX02 :===============" << std::endl;
-  RUN_TEST("test0 - orthodox canonical form", {
-	AForm f1("f1", 1, 1);
-	AForm f1_def;
-
-    f1_def = f1;
-    std::cout << f1_def << std::endl;
-    AForm f1_cpy(f1);
-    std::cout << f1_cpy << std::endl;
-	});
-	RUN_TEST("test1 - execute grade too low", {
-		PresidentialPardonForm	f1;
+	RUN_TEST("test0 - execute grade too low", {
+		PresidentialPardonForm	f1("b2");
 		Bureaucrat	b1("b1", 24);
 
 		b1.signForm(f1);
 		b1.executeForm(f1);
 	})
-	RUN_TEST("test2 - execute form not signed", {
-			PresidentialPardonForm	f1;
+	RUN_TEST("test1 - execute form not signed", {
+			PresidentialPardonForm	f1("b2");
 			Bureaucrat	b1("b1", 24);
 
 			b1.executeForm(f1);
 			})
-	RUN_TEST("test3 - ShrubberyCreationForm", {
-			ShrubberyCreationForm	f1;
+	RUN_TEST("test2 - ShrubberyCreationForm", {
+			ShrubberyCreationForm	f1("b2");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);
 			b1.executeForm(f1);
 			})
-	RUN_TEST("test4 - PresidentialPardonForm", {
-			PresidentialPardonForm	f1;
+	RUN_TEST("test3 - PresidentialPardonForm", {
+			PresidentialPardonForm	f1("b2");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);
 			b1.executeForm(f1);
 			})
-	RUN_TEST("test3 - RobotomyRequestForm", {
-			RobotomyRequestForm	f1;
+	RUN_TEST("test4 - RobotomyRequestForm", {
+			RobotomyRequestForm	f1("b2");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);
@@ -147,6 +138,7 @@ void ex03() {
 		b1.signForm(*f2);
 		f3 = i1.makeForm("robotomy request", "yo");
 		b1.signForm(*f3);
+		b1.executeForm(*f3);
 		delete f1;
 		delete f2;
 		delete f3;

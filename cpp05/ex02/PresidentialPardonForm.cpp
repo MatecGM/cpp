@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:34:16 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 04:39:34 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 08:42:31 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 #include "log.h"
 
 PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", 25, 5) {
-    LOG("constructor PresidentialPardonForm empty")}
+	LOG("constructor PresidentialPardonForm empty")
+	_target = "default";
+}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5) {
+	LOG("constructor PresidentialPardonForm empty")
+	_target = target;
+}
 
 PresidentialPardonForm::PresidentialPardonForm (const PresidentialPardonForm &src) : AForm("PresidentialPardonForm", 25, 5) {
   LOG("constructor PresidentialPardonForm copy")
@@ -33,7 +40,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(
   return (*this);
 }
 
-void	presidentialExecuteAction(Bureaucrat const & executor)
+void	PresidentialPardonForm::executeAction() const
 {
-	std::cout << "Informs that " << executor.getName() << " has been pardoned by Zaphod Beeblerox" << std::endl;
+	std::cout << "Informs that " << _target << " has been pardoned by Zaphod Beeblerox" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 05:33:20 by mateo             #+#    #+#             */
-/*   Updated: 2025/06/20 06:17:07 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 09:18:33 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 	(void) target;
 	switch (std::distance(formList.begin(), it)) {
         case 0:
-            form = new PresidentialPardonForm;
+            form = new PresidentialPardonForm(target);
             break;
         case 1:
-            form = new	RobotomyRequestForm;
+            form = new	RobotomyRequestForm(target);
             break;
         case 2:
-            form = new	ShrubberyCreationForm;
+            form = new	ShrubberyCreationForm(target);
             break;
         default:
 			throw UnknownFormException();

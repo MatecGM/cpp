@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:25:14 by mateo             #+#    #+#             */
-/*   Updated: 2025/06/20 04:30:56 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 08:33:39 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class	AForm {
 		bool				_signed;
 		const int			_gradeSignIt;
 		const int			_gradeExecIt;
+
+		virtual void	executeAction() const = 0;
 	public:
 		AForm(void);
 		AForm(const std::string name, const int gradeSignIt, const int gradeExecIt);

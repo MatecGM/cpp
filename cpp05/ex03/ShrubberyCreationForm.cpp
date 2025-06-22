@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:26:49 by mbico             #+#    #+#             */
-/*   Updated: 2025/06/20 04:37:00 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 08:42:23 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137) {
     LOG("constructor ShrubberyCreationForm empty")
+	_target = "default";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137) {
+    LOG("constructor ShrubberyCreationForm empty")
+	_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : AForm("ShrubberyCreationForm", 145, 137) {
@@ -33,8 +39,8 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
   return (*this);
 }
 
-void	shrubberyExecuteAction(Bureaucrat const & executor) {
-	std::string	name = executor.getName() + "_shrubbery";
+void	ShrubberyCreationForm::executeAction() const {
+	std::string	name = _target + "_shrubbery";
 	std::ofstream outfile (name.c_str());
 	std::string	tree[] = {
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⣸⠀⠀⠀⠀⠀⠀⠀⠀⡄⡄⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀",

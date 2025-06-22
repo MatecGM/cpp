@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:46:08 by mateo             #+#    #+#             */
-/*   Updated: 2025/06/20 04:48:32 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/21 08:42:47 by mateo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,5 @@ void	AForm::execute(Bureaucrat const & executor) const{
 		throw FormNotSignedException();
 	if (executor.getGrade() > _gradeExecIt)
 		throw GradeTooLowException();
-
-	if (_name == "ShrubberyCreationForm")
-		shrubberyExecuteAction(executor);
-	else if (_name == "RobotomyRequestForm")
-		robotomyExecuteAction(executor);
-	else if (_name == "PresidentialPardonForm")
-		presidentialExecuteAction(executor);
-	else
-		std::cerr << "Unknown Form" << std::endl;
+	executeAction();
 }
