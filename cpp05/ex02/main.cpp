@@ -99,21 +99,21 @@ void ex02() {
 			b1.executeForm(f1);
 			})
 	RUN_TEST("test2 - ShrubberyCreationForm", {
-			ShrubberyCreationForm	f1("b2");
+			ShrubberyCreationForm	f1("presidential");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);
 			b1.executeForm(f1);
 			})
 	RUN_TEST("test3 - PresidentialPardonForm", {
-			PresidentialPardonForm	f1("b2");
+			PresidentialPardonForm	f1("shrubbery");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);
 			b1.executeForm(f1);
 			})
 	RUN_TEST("test4 - RobotomyRequestForm", {
-			RobotomyRequestForm	f1("b2");
+			RobotomyRequestForm	f1("robotomy");
 			Bureaucrat	b1("b1", 1);
 
 			b1.signForm(f1);

@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 05:33:20 by mateo             #+#    #+#             */
-/*   Updated: 2025/06/21 09:18:33 by mateo            ###   ########.fr       */
+/*   Updated: 2025/06/22 23:43:06 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "RobotomyRequestForm.h"
 #include "ShrubberyCreationForm.h"
 #include "log.h"
-#include <list>
-#include <algorithm>
 
 Intern::Intern(void){LOG("constructor Intern empty")}
 
@@ -36,15 +34,15 @@ Intern &Intern::operator=(Intern const &src) {
 
 AForm	*Intern::makeForm(std::string name, std::string target) {
 	AForm	*form = NULL;
-	std::list<std::string> formList;
-
-	formList.push_back("presidential pardon");
-	formList.push_back("robotomy request");
-	formList.push_back("shrubbery creation");
-	std::list<std::string>::iterator	it = std::find(formList.begin(), formList.end(), name);
+	std::string	formList[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+	int	i;
+	for (i = 0; i < 3; i ++)
+	{
+		if (name == formList[i])
+			break;
+	}
 	
-	(void) target;
-	switch (std::distance(formList.begin(), it)) {
+	switch (i) {
         case 0:
             form = new PresidentialPardonForm(target);
             break;

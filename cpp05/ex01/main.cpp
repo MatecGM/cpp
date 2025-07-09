@@ -106,6 +106,7 @@ void ex01() {
     Bureaucrat jeff("Jeff", 42);
     Form contractE("8f", 100, 100);
     jeff.signForm(contractE);
+    std::cout << contractE << std::endl;
     Form contractF("9g", 1, 1);
     jeff.signForm(contractF);
 	})

@@ -6,7 +6,7 @@
 #    By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 23:42:46 by mbico             #+#    #+#              #
-#    Updated: 2025/06/29 17:29:47 by mateo            ###   ########.fr        #
+#    Updated: 2025/07/10 00:11:49 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@echo "$(RED)Removing object...$(NC)"
-	@rm *.o
+	@rm -f *.o
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"

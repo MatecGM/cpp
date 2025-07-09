@@ -6,12 +6,17 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:34:46 by mateo             #+#    #+#             */
-/*   Updated: 2025/06/29 18:58:16 by mateo            ###   ########.fr       */
+/*   Updated: 2025/07/10 00:17:17 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.h"
 #include "log.h"
+#include <cmath>
+#include <cstdlib>
+#include <climits>
+#include <cerrno>
+#include <iostream>
 
 ScalarConverter::ScalarConverter(void) {
 }
@@ -109,7 +114,73 @@ e_type	realType(const std::string str) {
 	return (type);
 }
 
-void	ScalarConverter::convert(const std::string &str)
+bool	isIntOverflow(const char *str) {
+	long nb;
+
+	nb = std::strtol(str, NULL, 10);
+
+	if (errno == ERANGE || nb > INT_MAX  || nb < INT_MIN)
+		return false;
+	return true;
+}
+
+bool	isFloatOverflow(const char *str)
 {
-	(void)realType(str);
+	float	nb;
+
+	nb = std::strtof(str, NULL);
+	if (nb == HUGE_VALF)
+		return (false);
+	return (true);
+}
+
+bool	isDoubleOverflow(const char *str)
+{
+	double	nb;
+
+	nb = std::strtod(str, NULL);
+	if (nb == HUGE_VAL)
+		return (false);
+	return (true);
+}
+
+bool	isCharOverflow(const char *str) {
+	long nb;
+
+	nb = std::strtol(str, NULL, 10);
+
+	if (errno == ERANGE || nb > CHAR_MAX  || nb < CHAR_MIN)
+		return false;
+	return true;
+}
+
+void	ScalarConverter::convert(const std::string &str)
+{	
+	switch (static_cast<int>(realType(str))) {
+		case INT:
+			{
+				int nb = static_cast<int>(std::strtol(str.c_str(), NULL, 10));
+				std::cout <<nb<<std::endl;
+				printConvert<int>(nb, str.c_str());
+				break;
+			}
+		case CHAR:
+			{
+				char nb = str[0];
+				printConvert<char>(nb, str.c_str());
+				break;
+			}
+		case FLOAT:
+			{
+				float nb = std::strtof(str.c_str(), NULL);
+				printConvert<float>(nb, str.c_str());
+				break;
+			}
+		case DOUBLE:
+			{
+				double nb = std::strtod(str.c_str(), NULL);
+				printConvert<double>(nb, str.c_str());
+				break;
+			}
+	}
 }
