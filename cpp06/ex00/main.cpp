@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:05:03 by mateo             #+#    #+#             */
-/*   Updated: 2025/07/11 16:22:12 by mbico            ###   ########.fr       */
+/*   Updated: 2025/07/12 22:09:54 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,4 @@ int	main(int argc, char *argv[]) {
 	}
 	nbStr = argv[1];
 	ScalarConverter().convert(nbStr);
-	
-	/* std::cout << "int: " << argv[1] << "\n"; */
-	/* std::cout << "float: " << argv[1] << "f\n"; */
-	/* std::cout << "double: " << argv[1] << std::endl; */
-
 }

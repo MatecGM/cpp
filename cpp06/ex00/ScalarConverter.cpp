@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:34:46 by mateo             #+#    #+#             */
-/*   Updated: 2025/07/10 00:17:17 by mbico            ###   ########.fr       */
+/*   Updated: 2025/07/12 22:55:47 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	isInt(const std::string str) {
 		i++;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] < '0' || str[i] > '9' || !isIntOverflow(str.c_str()))
 			return (false);
 		i++;
 	}
@@ -51,7 +51,7 @@ bool	isInt(const std::string str) {
 
 bool	isChar(const std::string str)
 {
-	if (str.length() == 1 && str[0] >= 32 && str[0] <= 126)
+	if (str.length() == 1 && str[0] >= 32 && str[0] <= 126 && isCharOverflow(str.c_str()))
 		return (true);
 	return (false);
 }
@@ -74,7 +74,7 @@ bool	isFloat(const std::string str)
 			return (false);
 		i ++;
 	}
-	if (dot == 1 && f == 1 && str[i - 1] == 'f')
+	if (dot == 1 && f == 1 && str[i - 1] == 'f' && isFloatOverflow(str.c_str()))
 		return (true);
 	return (false);
 }
@@ -94,7 +94,7 @@ bool	isDouble(const std::string str)
 			return (false);
 		i++;
 	}
-	if (dot == 1)
+	if (dot == 1 && isDoubleOverflow(str.c_str()))
 		return (true);
 	return (false);
 }
@@ -102,7 +102,13 @@ bool	isDouble(const std::string str)
 e_type	realType(const std::string str) {
 	e_type	type = ERROR;
 
-	if (isInt(str))
+	if (str == "nan" || str == "nanf")
+		type = NANF;
+	else if (str == "-inf" || str == "-inff")
+		type = NINF;
+	else if (str == "+inf" || str == "+inff")
+		type = PINF;
+	else if (isInt(str))
 		type = INT;
 	else if (isChar(str))
 		type = CHAR;
@@ -110,7 +116,6 @@ e_type	realType(const std::string str) {
 		type = FLOAT;
 	else if (isDouble(str))
 		type = DOUBLE;
-	LOG(YELLOW << "input realType(): " << BLUE << type);
 	return (type);
 }
 
@@ -154,33 +159,60 @@ bool	isCharOverflow(const char *str) {
 	return true;
 }
 
+void	exceptPrintConvert(std::string str)
+{
+	std::cout << "char: impossible\n";
+	std::cout << "int: impossible\n";
+	std::cout << "float: " << str << "f\n";
+	std::cout << "double: " << str << std::endl;
+}
+
 void	ScalarConverter::convert(const std::string &str)
 {	
 	switch (static_cast<int>(realType(str))) {
+		case NANF:
+			LOG(YELLOW << "input realType(): " << BLUE << "nan");
+			exceptPrintConvert("nan");
+			break;
+		case NINF:
+			LOG(YELLOW << "input realType(): " << BLUE << "-inf");
+			exceptPrintConvert("-inf");
+			break;
+		case PINF:
+			LOG(YELLOW << "input realType(): " << BLUE << "+inf");
+			exceptPrintConvert("+inf");
+			break;
 		case INT:
 			{
+				LOG(YELLOW << "input realType(): " << BLUE << "int");
 				int nb = static_cast<int>(std::strtol(str.c_str(), NULL, 10));
-				std::cout <<nb<<std::endl;
 				printConvert<int>(nb, str.c_str());
 				break;
 			}
 		case CHAR:
 			{
+				LOG(YELLOW << "input realType(): " << BLUE << "char");
 				char nb = str[0];
 				printConvert<char>(nb, str.c_str());
 				break;
 			}
 		case FLOAT:
 			{
+				LOG(YELLOW << "input realType(): " << BLUE << "float");
 				float nb = std::strtof(str.c_str(), NULL);
 				printConvert<float>(nb, str.c_str());
 				break;
 			}
 		case DOUBLE:
 			{
+				LOG(YELLOW << "input realType(): " << BLUE << "double");
 				double nb = std::strtod(str.c_str(), NULL);
 				printConvert<double>(nb, str.c_str());
 				break;
 			}
+		default:
+			LOG(RED << "Type Error: not recognized")
+			std::cout << "Type is not recognized, type supported : char, int, float, double" << std::endl;
+			break;
 	}
 }
