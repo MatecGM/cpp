@@ -6,13 +6,13 @@
 #    By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 23:42:46 by mbico             #+#    #+#              #
-#    Updated: 2025/07/20 08:38:34 by mateo            ###   ########.fr        #
+#    Updated: 2025/07/20 08:38:04 by mateo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = serealization
+NAME = identify
 
 SRCS = $(shell find . -name '*.cpp')
 OBJS = $(SRCS:%.cpp=%.o)
