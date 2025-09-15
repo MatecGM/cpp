@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:00:52 by mateo             #+#    #+#             */
-/*   Updated: 2025/07/20 08:35:56 by mateo            ###   ########.fr       */
+/*   Updated: 2025/07/21 14:09:35 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main()
 	base = generate();
 	identify(base);
 	identify(&(*base));
+	delete	base;
 	return (0);
 }

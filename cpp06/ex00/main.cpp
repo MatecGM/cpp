@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:05:03 by mateo             #+#    #+#             */
-/*   Updated: 2025/07/12 22:09:54 by mbico            ###   ########.fr       */
+/*   Updated: 2025/07/21 13:59:15 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	main(int argc, char *argv[]) {
 		return 1;
 	}
 	nbStr = argv[1];
-	ScalarConverter().convert(nbStr);
+	ScalarConverter::convert(nbStr);
 }

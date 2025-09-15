@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:45:24 by mbico             #+#    #+#             */
-/*   Updated: 2025/07/14 22:12:15 by mbico            ###   ########.fr       */
+/*   Updated: 2025/07/21 14:10:06 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int	main(void) {
 	data = Serializer::deserialize(ptr);
 	std::cout << data->nb << "\n";
 	std::cout << data->str << std::endl;
+	delete data;
 }

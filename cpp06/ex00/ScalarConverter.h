@@ -6,7 +6,7 @@
 /*   By: mateo <mateo@42angouleme.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:34:42 by mateo             #+#    #+#             */
-/*   Updated: 2025/07/12 22:58:18 by mbico            ###   ########.fr       */
+/*   Updated: 2025/07/21 14:04:09 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	printConvert(T nb, const char *str) {
 	if (isDoubleOverflow(str))
 	{
 		std::cout << "double: " << static_cast<double>(nb);
-		if (static_cast<double>(nb) == static_cast<int>(nb) && nb < 1000000 & nb > 1000000)
+		if (static_cast<double>(nb) == static_cast<int>(nb) && nb < 1000000 & nb > -1000000)
 			std::cout << ".0";
 		std::cout << std::endl;
 	}
@@ -67,7 +67,7 @@ enum	e_type {
 class ScalarConverter {
 	public:
 		static void	convert(const std::string &str);
-
+	private:
 		ScalarConverter(const ScalarConverter &ref);
 		ScalarConverter(void);
 		~ScalarConverter(void);
