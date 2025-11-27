@@ -6,15 +6,16 @@
 #    By: mbico <mbico@42angouleme.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 23:42:46 by mbico             #+#    #+#              #
-#    Updated: 2025/09/26 11:14:14 by mateo            ###   ########.fr        #
+#    Updated: 2025/11/18 17:29:10 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = ex02
+NAME = ex01
 
-SRCS = $(shell find . -name '*.cpp')
+SRCS = Span.cpp\
+	main.cpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 RED = \033[0;31m
